@@ -7,9 +7,10 @@ import weatherReducer from "../features/weather/weatherSlice";
 const middleware = [thunk];
 
 export default configureStore({
-    reducer: {
-        counter: counterReducer,
-        weather: weatherReducer,
-    },
-    middleware,
+  reducer: {
+    counter: counterReducer,
+    weather: weatherReducer,
+  },
+  devTools: true,
+  middleware,
 });
