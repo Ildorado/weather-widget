@@ -10,10 +10,12 @@ const Container = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.background};
 `;
+
 const Icon = styled.img`
   width: 2.5rem;
   height: 2.5rem;
 `;
+
 const Day = styled.div`
   margin: 0;
   :nth-child(2) {
@@ -21,10 +23,12 @@ const Day = styled.div`
     margin-bottom: 0.25rem;
   }
 `;
+
 const Temperature = styled.h3`
   margin-top: 0.5rem;
   margin-bottom: 0;
 `;
+
 export function WeatherForecastElement({ weatherInfo }) {
     const mostRelevantWeatherDescription = weatherInfo.weather[0];
   return (

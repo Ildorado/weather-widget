@@ -7,14 +7,17 @@ import throttle from "lodash.throttle";
 const Input = styled.input`
   width: 70%;
 `;
+
 const Button = styled.button`
   width: 25%;
 `;
+
 const Form = styled.form`
   display: flex;
   width: 100%;
   justify-content: space-between;
 `;
+
 export function Search() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();

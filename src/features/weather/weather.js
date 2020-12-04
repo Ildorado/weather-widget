@@ -19,6 +19,7 @@ const Container = styled.div`
   }
   min-height: 25rem;
 `;
+
 const WeatherContainer = styled.div`
   box-sizing: border-box;
   display: flex;
@@ -29,9 +30,11 @@ const WeatherContainer = styled.div`
   border: 0.125rem solid ${(props) => props.theme.colors.border};
   padding: 1rem;
 `;
+
 const SpinnerContainer = styled.div`
   margin-top: 5rem;
 `;
+
 const SearchContainer = styled.div`
   display: flex;
   width: 100%;

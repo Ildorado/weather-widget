@@ -9,10 +9,12 @@ const Container = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.background};
 `;
+
 const Icon = styled.img`
   width: 5rem;
   height: 5rem;
 `;
+
 const CurrentWeatherContainer = styled.div`
   width: 100%;
   display: flex;
@@ -20,10 +22,12 @@ const CurrentWeatherContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
+
 const CurrentWeatherData = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const Paragraph = styled.div`
   margin: 0;
   :nth-child(2) {
