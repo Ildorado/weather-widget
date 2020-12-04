@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { timeFormats } from "../constants";
-import { formatTime } from "../utils/formatting";
+import { timeFormats } from "../../constants";
+import { formatTime } from "../../utils/formatting";
 
 const Container = styled.div`
   display: flex;
@@ -29,8 +29,8 @@ const Temperature = styled.h3`
   margin-bottom: 0;
 `;
 
-export function WeatherForecastElement({ weatherInfo }) {
-    const mostRelevantWeatherDescription = weatherInfo.weather[0];
+function WeatherForecastElement({ weatherInfo }) {
+  const mostRelevantWeatherDescription = weatherInfo.weather[0];
   return (
     <Container>
       <Day>
@@ -48,3 +48,4 @@ export function WeatherForecastElement({ weatherInfo }) {
     </Container>
   );
 }
+export default WeatherForecastElement;

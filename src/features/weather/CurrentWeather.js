@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { formatTime } from "../utils/formatting";
+import { formatTime } from "../../utils/formatting";
 
 const Container = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ const Paragraph = styled.div`
   }
 `;
 
-export function CurrentWeather({ currentWeather }) {
+function CurrentWeather({ currentWeather }) {
   const todayWeather = currentWeather.daily[0];
   const mostRelevantWeatherDescription = todayWeather.weather[0];
   return (
@@ -67,3 +67,4 @@ export function CurrentWeather({ currentWeather }) {
     </Container>
   );
 }
+export default CurrentWeather;

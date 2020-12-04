@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { WeatherForecastElement } from "./WeatherForecastElement";
+import WeatherForecastElement from "./WeatherForecastElement";
 
 const Container = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.colors.background};
 `;
 
-export function WeatherForecast({ weatherDaily }) {
+function WeatherForecast({ weatherDaily }) {
   // weatherDaily[0] is today weather, while we
   // need weather only for following days, that's why we slice it
   const weatherForecastFiveDaysAhead = weatherDaily.slice(1, 6);
@@ -25,3 +25,4 @@ export function WeatherForecast({ weatherDaily }) {
     </Container>
   );
 }
+export default WeatherForecast;
