@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { fetchWeatherForecast } from "../features/weather/weatherSlice";
+import { fetchWeatherForecast } from "./weatherSlice";
 import throttle from "lodash.throttle";
 
 const Input = styled.input`
@@ -18,7 +18,7 @@ const Form = styled.form`
   justify-content: space-between;
 `;
 
-export function Search() {
+function Search() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
 
@@ -48,3 +48,4 @@ export function Search() {
     </Form>
   );
 }
+export default Search;

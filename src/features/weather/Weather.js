@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { selectWeather } from "./weatherSlice";
 import styled from "styled-components";
-import {
-  CurrentWeather,
-  WeatherForecast,
-  Search,
-  DelayedSpinner,
-} from "../../components";
+import { DelayedSpinner } from "../../components";
+import CurrentWeather from "./CurrentWeather";
+import WeatherForecast from "./WeatherForecast";
+import Search from "./Search";
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +42,7 @@ const SearchContainer = styled.div`
 export function Weather() {
   const weather = useSelector(selectWeather);
 
-  const renderContent = () => {
+  const renderContent = useCallback(() => {
     if (weather.loading) {
       return (
         <SpinnerContainer>
@@ -69,7 +67,7 @@ export function Weather() {
         </WeatherContainer>
       );
     }
-  };
+  }, [weather]);
 
   return (
     <Container>
@@ -77,22 +75,7 @@ export function Weather() {
       <SearchContainer>
         <Search />
       </SearchContainer>
-      {/* {weather.loading ? (
-        <SpinnerContainer>
-          <DelayedSpinner delay={200} />
-        </SpinnerContainer>
-      ) : weather.error ? (
-        <WeatherContainer>
-          <h3>City not found</h3>
-        </WeatherContainer>
-      ) : weather.current ? (
-        <WeatherContainer>
-          <CurrentWeather currentWeather={weather.current} />
-          <WeatherForecast weatherDaily={weather.current.daily} />
-        </WeatherContainer>
-      ) : (
-        <></>
-      )} */}
+
       {renderContent()}
     </Container>
   );
