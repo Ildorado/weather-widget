@@ -43,16 +43,41 @@ const SearchContainer = styled.div`
 
 export function Weather() {
   const weather = useSelector(selectWeather);
-  React.useEffect(() => {
-    console.log("weather:", weather);
-  }, [weather]);
+
+  const renderContent = () => {
+    if (weather.loading) {
+      return (
+        <SpinnerContainer>
+          <DelayedSpinner delay={200} />
+        </SpinnerContainer>
+      );
+    }
+
+    if (weather.error) {
+      return (
+        <WeatherContainer>
+          <h3>City not found</h3>
+        </WeatherContainer>
+      );
+    }
+
+    if (weather.current) {
+      return (
+        <WeatherContainer>
+          <CurrentWeather currentWeather={weather.current} />
+          <WeatherForecast weatherDaily={weather.current.daily} />
+        </WeatherContainer>
+      );
+    }
+  };
+
   return (
     <Container>
       <h1> Weather App </h1>
       <SearchContainer>
         <Search />
       </SearchContainer>
-      {weather.loading ? (
+      {/* {weather.loading ? (
         <SpinnerContainer>
           <DelayedSpinner delay={200} />
         </SpinnerContainer>
@@ -67,7 +92,8 @@ export function Weather() {
         </WeatherContainer>
       ) : (
         <></>
-      )}
+      )} */}
+      {renderContent()}
     </Container>
   );
 }

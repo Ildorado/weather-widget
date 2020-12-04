@@ -16,7 +16,7 @@ export function WeatherForecast({ weatherDaily }) {
   const weatherForecastFiveDaysAhead = weatherDaily.slice(1, 6);
   return (
     <Container>
-      {weatherForecastFiveDaysAhead.map((weatherInfo, ìndex) => (
+      {weatherForecastFiveDaysAhead.map((weatherInfo) => (
         <WeatherForecastElement
           weatherInfo={weatherInfo}
           key={weatherInfo.dt}
