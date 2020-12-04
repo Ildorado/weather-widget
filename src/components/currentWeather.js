@@ -34,14 +34,14 @@ const Paragraph = styled.div`
 
 export function CurrentWeather({ currentWeather }) {
   const todayWeather = currentWeather.daily[0];
-
+  const mostRelevantWeatherDescription = todayWeather.weather[0];
   return (
     <Container>
       <h3>{currentWeather.cityName}</h3>
       <CurrentWeatherContainer>
         <Icon
-          src={`http://openweathermap.org/img/wn/${todayWeather.weather[0].icon}@2x.png`}
-          alt={todayWeather.weather[0].description}
+          src={`http://openweathermap.org/img/wn/${mostRelevantWeatherDescription.icon}@2x.png`}
+          alt={mostRelevantWeatherDescription.description}
         />
         <h2>{Math.round(todayWeather.temp.day)}℃</h2>
         <CurrentWeatherData>

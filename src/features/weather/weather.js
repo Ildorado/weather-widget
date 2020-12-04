@@ -1,39 +1,57 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchWeatherForecast, selectWeather } from "./weatherSlice";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectWeather } from "./weatherSlice";
 import styled from "styled-components";
-import { CurrentWeather, WeatherForecast } from "../../components";
+import { CurrentWeather, WeatherForecast, Search } from "../../components";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 22.5rem;
-  height: 22.5rem;
+  width: 100%;
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    width: 22.5rem;
+  }
+  min-height: 25rem;
+`;
+const WeatherContainer = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.background};
   border: 0.125rem solid ${(props) => props.theme.colors.border};
+  padding: 1rem;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
 `;
 
 export function Weather() {
   const weather = useSelector(selectWeather);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchWeatherForecast({ query: "London" }));
-  }, [dispatch]);
-  // const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    console.log("weather:", weather);
-    console.log("weather.loading:,", weather.loading);
-  }, [weather]);
 
   return (
     <Container>
       <h1> Weather App </h1>
-      {weather.loading === false && (
-        <>
-          <CurrentWeather currentWeather={weather.current} />
-          <WeatherForecast weatherDaily={weather.current.daily} />
-        </>
+      <SearchContainer>
+        <Search />
+      </SearchContainer>
+
+      {!weather.loading && (
+        <WeatherContainer>
+          {weather.error ? (
+            <h3>City not found</h3>
+          ) : (
+            <>
+              <CurrentWeather currentWeather={weather.current} />
+              <WeatherForecast weatherDaily={weather.current.daily} />
+            </>
+          )}
+        </WeatherContainer>
       )}
     </Container>
   );

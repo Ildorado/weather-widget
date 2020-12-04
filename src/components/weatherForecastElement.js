@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { timeFormats } from "../constants";
 import { formatTime } from "../utils/formatting";
 
 const Container = styled.div`
@@ -24,19 +25,21 @@ const Temperature = styled.h3`
   margin-top: 0.5rem;
   margin-bottom: 0;
 `;
-export function WeatherForecastElement({ weatherObj }) {
+export function WeatherForecastElement({ weatherInfo }) {
   return (
     <Container>
-      {weatherObj && (
-        <>
-          <Day>{formatTime(weatherObj.dt, weatherObj.timezone, "ddd")}</Day>
-          <Icon
-            src={`http://openweathermap.org/img/wn/${weatherObj.weather[0].icon}@2x.png`}
-            alt={weatherObj.weather[0].description}
-          />
-          <Temperature>{Math.round(weatherObj.temp.day)}℃</Temperature>
-        </>
-      )}
+      <Day>
+        {formatTime(
+          weatherInfo.dt,
+          weatherInfo.timezone,
+          timeFormats.DayShortened
+        )}
+      </Day>
+      <Icon
+        src={`http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`}
+        alt={weatherInfo.weather[0].description}
+      />
+      <Temperature>{Math.round(weatherInfo.temp.day)}℃</Temperature>
     </Container>
   );
 }

@@ -10,13 +10,16 @@ const Container = styled.div`
 `;
 
 export function WeatherForecast({ weatherDaily }) {
+  // weatherDaily[0] is today weather
+  const WeatherForecastFiveDaysAhead = weatherDaily.slice(1, 6);
   return (
     <Container>
-      <WeatherForecastElement weatherObj={weatherDaily[1]} />
-      <WeatherForecastElement weatherObj={weatherDaily[2]} />
-      <WeatherForecastElement weatherObj={weatherDaily[3]} />
-      <WeatherForecastElement weatherObj={weatherDaily[4]} />
-      <WeatherForecastElement weatherObj={weatherDaily[5]} />
+      {WeatherForecastFiveDaysAhead.map((weatherInfo, ìndex) => (
+        <WeatherForecastElement
+          weatherInfo={weatherInfo}
+          key={weatherInfo.dt}
+        />
+      ))}
     </Container>
   );
 }
