@@ -26,6 +26,7 @@ const Temperature = styled.h3`
   margin-bottom: 0;
 `;
 export function WeatherForecastElement({ weatherInfo }) {
+    const mostRelevantWeatherDescription = weatherInfo.weather[0];
   return (
     <Container>
       <Day>
@@ -36,8 +37,8 @@ export function WeatherForecastElement({ weatherInfo }) {
         )}
       </Day>
       <Icon
-        src={`http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`}
-        alt={weatherInfo.weather[0].description}
+        src={`http://openweathermap.org/img/wn/${mostRelevantWeatherDescription.icon}@2x.png`}
+        alt={mostRelevantWeatherDescription.description}
       />
       <Temperature>{Math.round(weatherInfo.temp.day)}℃</Temperature>
     </Container>

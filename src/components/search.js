@@ -33,15 +33,12 @@ export function Search() {
     },
     [throttledDispatch]
   );
-
+  const handleOnChange = useCallback((event) => {
+    setInputValue(event.target.value);
+  }, []);
   return (
     <Form noValidate>
-      <Input
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-        }}
-      />
+      <Input value={inputValue} onChange={handleOnChange} />
       <Button type="submit" onClick={handleSubmit}>
         Search
       </Button>

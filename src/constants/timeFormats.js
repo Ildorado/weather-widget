@@ -1,4 +1,4 @@
 export const timeFormats = {
-  HourPlusMinutesPlusPlusPostMeridian: "hh:mm A",
+  HourPlusMinutesPlusPostMeridian: "hh:mm A",
   DayShortened: "ddd",
 };

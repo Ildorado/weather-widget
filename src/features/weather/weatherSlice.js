@@ -11,9 +11,11 @@ export const fetchWeatherForecast = createAsyncThunk(
       .fetchCurrentWeather({ query })
       .then((data) => weatherAPI.fetchWeatherForecast(data.data.coord))
       .then((forecastData) => {
-        forecastData.data.cityName =
-          query.charAt(0).toUpperCase() + query.slice(1);
-        return forecastData;
+        const cityName = query.charAt(0).toUpperCase() + query.slice(1);
+        return {
+          ...forecastData,
+          data: { ...forecastData.data, cityName: cityName },
+        };
       });
   }
 );
@@ -21,7 +23,7 @@ export const weatherSlice = createSlice({
   name: sliceName,
   initialState: {
     current: null,
-    loading: true,
+    loading: false,
     error: null,
   },
   reducers: {},

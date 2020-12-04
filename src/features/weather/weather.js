@@ -2,7 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectWeather } from "./weatherSlice";
 import styled from "styled-components";
-import { CurrentWeather, WeatherForecast, Search } from "../../components";
+import {
+  CurrentWeather,
+  WeatherForecast,
+  Search,
+  DelayedSpinner,
+} from "../../components";
 
 const Container = styled.div`
   display: flex;
@@ -24,7 +29,9 @@ const WeatherContainer = styled.div`
   border: 0.125rem solid ${(props) => props.theme.colors.border};
   padding: 1rem;
 `;
-
+const SpinnerContainer = styled.div`
+  margin-top: 5rem;
+`;
 const SearchContainer = styled.div`
   display: flex;
   width: 100%;
@@ -33,25 +40,30 @@ const SearchContainer = styled.div`
 
 export function Weather() {
   const weather = useSelector(selectWeather);
-
+  React.useEffect(() => {
+    console.log("weather:", weather);
+  }, [weather]);
   return (
     <Container>
       <h1> Weather App </h1>
       <SearchContainer>
         <Search />
       </SearchContainer>
-
-      {!weather.loading && (
+      {weather.loading ? (
+        <SpinnerContainer>
+          <DelayedSpinner delay={200} />
+        </SpinnerContainer>
+      ) : weather.error ? (
         <WeatherContainer>
-          {weather.error ? (
-            <h3>City not found</h3>
-          ) : (
-            <>
-              <CurrentWeather currentWeather={weather.current} />
-              <WeatherForecast weatherDaily={weather.current.daily} />
-            </>
-          )}
+          <h3>City not found</h3>
         </WeatherContainer>
+      ) : weather.current ? (
+        <WeatherContainer>
+          <CurrentWeather currentWeather={weather.current} />
+          <WeatherForecast weatherDaily={weather.current.daily} />
+        </WeatherContainer>
+      ) : (
+        <></>
       )}
     </Container>
   );

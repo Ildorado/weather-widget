@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { WeatherForecastElement } from "./weatherForecastElement";
+import { WeatherForecastElement } from "./WeatherForecastElement";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -10,11 +10,12 @@ const Container = styled.div`
 `;
 
 export function WeatherForecast({ weatherDaily }) {
-  // weatherDaily[0] is today weather
-  const WeatherForecastFiveDaysAhead = weatherDaily.slice(1, 6);
+  // weatherDaily[0] is today weather, while we
+  // need weather only for following days, that's why we slice it
+  const weatherForecastFiveDaysAhead = weatherDaily.slice(1, 6);
   return (
     <Container>
-      {WeatherForecastFiveDaysAhead.map((weatherInfo, ìndex) => (
+      {weatherForecastFiveDaysAhead.map((weatherInfo, ìndex) => (
         <WeatherForecastElement
           weatherInfo={weatherInfo}
           key={weatherInfo.dt}

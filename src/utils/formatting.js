@@ -8,7 +8,7 @@ dayjs.extend(timezone);
 export const formatTime = (
   num,
   timezone,
-  format = timeFormats.HourPlusMinutesPlusPlusPostMeridian
+  format = timeFormats.HourPlusMinutesPlusPostMeridian
 ) => {
   const date = dayjs.unix(num).tz(timezone);
   return date.format(format);
