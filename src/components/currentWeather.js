@@ -1,6 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectWeather } from "../features/weather/weatherSlice";
 import styled from "styled-components";
 import { formatTime } from "../utils/formatting";
 
@@ -8,7 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
+  width: 100%;
   background-color: ${(props) => props.theme.colors.background};
 `;
 const Icon = styled.img`
@@ -34,30 +32,30 @@ const Paragraph = styled.div`
   }
 `;
 
-export function CurrentWeather() {
-  const weather = useSelector(selectWeather);
+export function CurrentWeather({ currentWeather }) {
+  const todayWeather = currentWeather.daily[0];
 
   return (
     <Container>
-      <h3>{weather.current.cityName}</h3>
+      <h3>{currentWeather.cityName}</h3>
       <CurrentWeatherContainer>
         <Icon
-          src={`http://openweathermap.org/img/wn/${weather.current.daily[0].weather[0].icon}@2x.png`}
-          alt="weather icon"
+          src={`http://openweathermap.org/img/wn/${todayWeather.weather[0].icon}@2x.png`}
+          alt={todayWeather.weather[0].description}
         />
-        <h2>{Math.round(weather.current.daily[0].temp.day)}℃</h2>
+        <h2>{Math.round(todayWeather.temp.day)}℃</h2>
         <CurrentWeatherData>
-          <Paragraph>Wind: {weather.current.daily[0].wind_speed} m/s</Paragraph>
+          <Paragraph>Wind: {todayWeather.wind_speed} m/s</Paragraph>
           <Paragraph>
             {`Sunrise: ${formatTime(
-              weather.current.daily[0].sunrise,
-              weather.current.timezone
+              todayWeather.sunrise,
+              todayWeather.timezone
             )}`}
           </Paragraph>
           <Paragraph>
             {`Sunset: ${formatTime(
-              weather.current.daily[0].sunset,
-              weather.current.timezone
+              todayWeather.sunset,
+              todayWeather.timezone
             )}`}
           </Paragraph>
         </CurrentWeatherData>
