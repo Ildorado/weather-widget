@@ -1,5 +1,5 @@
 import React from "react";
-import { Weather } from "./features/weather/weather";
+import { Weather } from "./features/weather/Weather";
 import Theme from "./theme";
 import styled, { ThemeProvider } from "styled-components";
 
