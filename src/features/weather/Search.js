@@ -40,8 +40,8 @@ function Search() {
     setInputValue(event.target.value);
   }, []);
   return (
-    <Form noValidate>
-      <Input value={inputValue} onChange={handleOnChange} />
+    <Form role="form" noValidate>
+      <Input role="searchBox" value={inputValue} onChange={handleOnChange} />
       <Button type="submit" onClick={handleSubmit}>
         Search
       </Button>

@@ -1,12 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import weatherAPI from "../../api";
-
 const sliceName = "weather";
 
 export const fetchWeatherForecast = createAsyncThunk(
   `${sliceName}/fetchWeatherForecast`,
-  ({ query }) => {
+  ({ query }, { extra: { weatherAPI } }) => {
     return weatherAPI
       .fetchCurrentWeather({ query })
       .then((data) => weatherAPI.fetchWeatherForecast(data.data.coord))

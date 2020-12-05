@@ -39,7 +39,7 @@ const SearchContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-export function Weather() {
+function Weather() {
   const weather = useSelector(selectWeather);
 
   const renderContent = useCallback(() => {
@@ -71,7 +71,7 @@ export function Weather() {
 
   return (
     <Container>
-      <h1> Weather App </h1>
+      <h1 role="banner"> Weather App </h1>
       <SearchContainer>
         <Search />
       </SearchContainer>
@@ -80,3 +80,4 @@ export function Weather() {
     </Container>
   );
 }
+export default Weather;
