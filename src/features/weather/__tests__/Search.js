@@ -21,7 +21,7 @@ test("test with submit by button click", async () => {
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "London");
+  userEvent.type(screen.getByRole("searchbox"), "London");
   userEvent.click(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
 });
@@ -39,7 +39,7 @@ test("test with submit by button double click", async () => {
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "London");
+  userEvent.type(screen.getByRole("searchbox"), "London");
   userEvent.dblClick(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
 });

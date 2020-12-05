@@ -71,7 +71,7 @@ function Weather() {
 
   return (
     <Container>
-      <h1 role="banner"> Weather App </h1>
+      <h1> Weather App </h1>
       <SearchContainer>
         <Search />
       </SearchContainer>

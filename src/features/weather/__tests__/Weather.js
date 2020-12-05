@@ -28,7 +28,7 @@ test("test with valid city name", async () => {
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "London");
+  userEvent.type(screen.getByRole("searchbox"), "London");
   userEvent.click(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
   expect(await screen.findByText("London")).toBeInTheDocument();
@@ -48,7 +48,7 @@ test("test with invalid city name", async () => {
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "asd");
+  userEvent.type(screen.getByRole("searchbox"), "asd");
   userEvent.click(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
   expect(await screen.findByText("City not found")).toBeInTheDocument();
@@ -73,7 +73,7 @@ test("test showing spinner while api is delayed for more than set delay accepts"
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "asd");
+  userEvent.type(screen.getByRole("searchbox"), "asd");
   userEvent.click(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
   await waitFor(
@@ -110,7 +110,7 @@ test("test showing spinner while api is delayed for less then set delay spinner 
     </ThemeProvider>
   );
 
-  userEvent.type(screen.getByRole("searchBox"), "asd");
+  userEvent.type(screen.getByRole("searchbox"), "asd");
   userEvent.click(screen.getByRole("button"));
   expect(testWeatherAPI.fetchCurrentWeather).toBeCalledTimes(1);
   await waitFor(

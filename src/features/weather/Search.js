@@ -41,7 +41,7 @@ function Search() {
   }, []);
   return (
     <Form role="form" noValidate>
-      <Input role="searchBox" value={inputValue} onChange={handleOnChange} />
+      <Input role="searchbox" value={inputValue} onChange={handleOnChange} />
       <Button type="submit" onClick={handleSubmit}>
         Search
       </Button>
