@@ -8,7 +8,7 @@ const Loader = styled.div`
   width: 3rem;
   height: 3rem;
   animation: spin 2s linear infinite;
-  
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -30,5 +30,5 @@ export function DelayedSpinner({ delay = 200 }) {
     };
   }, [delay]);
 
-  return <>{showSpinner && <Loader />}</>;
+  return <>{showSpinner && <Loader data-testid="spinner" />}</>;
 }

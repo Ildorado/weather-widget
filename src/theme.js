@@ -6,6 +6,6 @@ const Theme = {
     spinner1: "#f3f3f3",
     spinner2: "#3498db",
   },
-  breakpoints: { sm: "48em", md: "62em", lg: "75em" },
+  breakpoints: ["48em", "62em", "75em"],
 };
 export default Theme;

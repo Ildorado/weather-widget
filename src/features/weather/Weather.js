@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { selectWeather } from "./weatherSlice";
 import styled from "styled-components";
+import { enchantedStyled } from "../../utils/enchantedStyled";
 import { DelayedSpinner } from "../../components";
 import CurrentWeather from "./CurrentWeather";
 import WeatherForecast from "./WeatherForecast";
@@ -11,10 +12,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
-    width: 22.5rem;
-  }
+  ${(props) =>
+    enchantedStyled("width:[100%, 22.5rem, 25rem, 27.5rem]", props.theme.breakpoints)}
   min-height: 25rem;
 `;
 
@@ -39,7 +38,7 @@ const SearchContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-export function Weather() {
+function Weather() {
   const weather = useSelector(selectWeather);
 
   const renderContent = useCallback(() => {
@@ -80,3 +79,4 @@ export function Weather() {
     </Container>
   );
 }
+export default Weather;
